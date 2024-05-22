@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+import "MessageID.proto";
+
+package GamePKG;
+
+//
+message TeamApplicantCF
+{
+    PKGTypeID   PkgID                           = 1;    //
+    uint64      UserID                          = 2;    //
+    uint64      RoleID                          = 3;    //
+    string      RoleName                        = 4;    //
+    int32       Vocation                        = 5;    //
+    int32       Gender                          = 6;    //
+    int32       Level                           = 7;    //
+    string      VerifyCode                      = 8;    //
+}
+
+message TeamInfoCF
+{
+    PKGTypeID   PkgID                           = 1;    //
+    uint64      UserID                          = 2;    //
+    uint64      TeamID                          = 3;    //
+    repeated TeamApplicantCF RoleList           = 4;    //
+}
+
+message LeaveTeam
+{
+    PKGTypeID   PkgID                           = 1;    //
+    uint64      UserID                          = 2;    //
+    uint64      RoleID                          = 3;    //
+    uint64      TeamID                          = 4;    //
+    string      VerifyCode                      = 5;    //
+}

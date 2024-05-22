@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+import "MessageID.proto";
+package GamePKG;
+
+message ChatMessage
+{
+    PKGTypeID   PkgID                           = 1;    //Packet type
+    uint64      UserID                          = 2;    //User ID
+    uint64      RoleID                          = 3;    //Role ID
+    string      RoleName                        = 4;    //Character nickname
+    CHATChannel ChannelID                       = 5;    //Character nickname
+    string      Content                         = 6;    //Chat content
+    string      VerifyCode                      = 7;    //Check code
+}

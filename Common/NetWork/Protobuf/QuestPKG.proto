@@ -1,0 +1,56 @@
+syntax = "proto3";
+import "MessageID.proto";
+
+package GamePKG;
+
+message QuestContent
+{
+    int32   Type                = 1;    //
+    int64   Param1              = 2;    //
+    int64   Param2              = 3;    //
+    int64   Param3              = 4;    //
+}
+
+
+message QuestOperate                            //
+{
+    PKGTypeID   PkgID                           = 1;    //
+    uint64      UserID                          = 2;    //
+    uint64      RoleID                          = 3;    //
+    int32       QuestID                         = 4;    //
+    int32       Operate                         = 5;    //
+    string      VerifyCode                      = 6;    //
+}
+
+message Quest
+{
+    PKGTypeID   PkgID                           = 1;    //
+    uint64      UserID                          = 2;    //
+    uint64      RoleID                          = 3;    //
+    int32       QuestID                         = 4;    //
+    int64       AcceptTime                      = 5;    //
+    int32       State                           = 6;    //
+    repeated QuestContent Content               = 7;    //
+}
+
+message QuestList
+{
+    PKGTypeID   PkgID                           = 1;    //
+    uint64      UserID                          = 2;    //
+    uint64      RoleID                          = 3;    //
+    repeated Quest QuestArray                   = 4;    //
+}
+
+message History
+{
+    PKGTypeID   PkgID                           = 1;    //
+    uint64      UserID                          = 2;    //
+    uint64      RoleID                          = 3;    //
+    int32       ID                              = 4;    //
+    int64       CompleteTime                    = 5;    //
+    int32       DayTimes                        = 6;    //
+    int32       WeekTimes                       = 7;    //
+    int32       MonthTimes                      = 8;    //
+    int32       YearTimes                       = 9;    //
+    int32       CountTimes                      = 10;   //
+}

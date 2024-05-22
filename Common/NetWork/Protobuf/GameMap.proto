@@ -1,0 +1,207 @@
+syntax = "proto3";
+
+import "MessageID.proto";
+import "RolePKG.proto";
+
+package GamePKG;
+
+message EnterGame
+{
+    PKGTypeID   PkgID                           = 1;    //Packet type
+    uint64      UserID                          = 2;    //Client ID
+    uint64      RoleID                          = 4;    //Role ID
+    string      VerifyCode                      = 5;    //Check code
+}
+
+message EnterGameResponse
+{
+    PKGTypeID   PkgID                           = 1;    //Packet type
+    uint64      UserID                          = 2;    //Client ID
+    uint64      RoleID                          = 4;    //Role ID
+    uint32      MapID                           = 5;    //Location map ID
+    uint64      CreatorID                       = 6;    //Map creator ID (copy)
+    float       PosX                            = 7;
+    float       PosY                            = 8;
+    float       PosZ                            = 9;
+    float       Direction                       = 10;   //towards
+}
+
+message OtherPlayerEnter
+{
+    PKGTypeID   PkgID                           = 1;    //Packet type
+    uint64      UserID                          = 2;    //Client ID
+    uint64      OtherUserID                     = 3;    //Client ID
+    uint64      OtherRoleID                     = 4;    //Role ID
+    float       PosX                            = 7;
+    float       PosY                            = 8;
+    float       PosZ                            = 9;
+    float       Direction                       = 10;   //towards
+    RoleInfo    OtherRoleInfo                   = 11;   //Player information
+    RoleAttr    OtherRoleAttr                   = 12;   //Player attributes
+}
+
+message PlayerControl
+{
+    PKGTypeID   PkgID                           = 1;    //Packet type
+    uint64      UserID                          = 2;    //Client ID
+    uint64      RoleID                          = 3;    //Role ID
+    float       Horizontal                      = 4;    //Lateral displacement
+    float       Vertical                        = 5;    //Longitudinal displacement
+    float       Direction                       = 6;    //towards
+    int32       State                           = 7;    //Status-1 stop, 0 walk, 1 run
+    bool        Jump                            = 8;    //jump
+    bool        LButton                         = 9;    //left click
+    bool        RButton                         = 10;   //Right click
+    bool        Dodge                           = 11;   //dodge
+    float       PosX                            = 12;
+    float       PosY                            = 13;
+    float       PosZ                            = 14;
+    string      VerifyCode                      = 15;   //Check code
+}
+
+message NpcMove
+{
+    PKGTypeID   PkgID                           = 1;    //Packet type
+    uint64      UserID                          = 2;    //Client ID
+    uint64      NpcID                           = 3;    //NPCID
+    float       Direction                       = 4;    //towards
+    int32       State                           = 5;    //Status-1 stop, 0 walk, 1 run
+    float       Speed                           = 6;    //speed
+    bool        Jump                            = 7;    //jump
+    bool        LButton                         = 8;    //left click
+    bool        RButton                         = 9;    //Right click
+    float       PosX                            = 11;
+    float       PosY                            = 12;
+    float       PosZ                            = 13;
+}
+
+message PlayerLeaveGame
+{
+    PKGTypeID   PkgID                           = 1;    //Packet type
+    uint64      UserID                          = 2;    //Client ID
+    uint64      RoleID                          = 3;    //Role ID
+}
+
+message NpcInfo
+{
+    PKGTypeID   PkgID                           = 1;    //Packet type
+    uint64      UserID                          = 2;    //Client ID
+    uint64      NpcID                           = 3;    //NPCID
+    int32       DefID                           = 4;    //ID in configuration table
+    float       PosX                            = 5;    
+    float       PosY                            = 6;
+    float       PosZ                            = 7;
+    float       Direction                       = 8;
+    float       Speed                           = 9;
+    int64       Life                            = 10;
+}
+
+message ChangeMap
+{
+    PKGTypeID   PkgID                           = 1;    
+    uint64      UserID                          = 2;   
+    uint64      RoleID                          = 3;   
+    int32       MapID                           = 4;    
+    float       PosX                            = 5;    
+    float       PosZ                            = 6;
+    string      VerifyCode                      = 7;   
+}
+
+message ItemOnMap
+{
+    PKGTypeID   PkgID                           = 1;    
+    uint64      UserID                          = 2;    
+    uint64      RoleID                          = 3;    
+    int32       MapID                           = 4;    
+    uint64      ItemID                          = 5;    
+    int32       TypeID                          = 6;    
+    float       PosX                            = 7;    
+    float       PosY                            = 8;
+    float       PosZ                            = 9;
+    float       Direction                       = 10;
+    float       RoteSpeed                       = 11;
+    int32       Count                           = 12;    
+    int64      LifeTime                         = 13;    
+}
+
+message ItemDesOnMap
+{
+    PKGTypeID   PkgID                           = 1;   
+    uint64      UserID                          = 2;    
+    uint64      RoleID                          = 3;    
+    int32       MapID                           = 4;   
+    uint64      ItemID                          = 5;    
+    int32       TypeID                          = 6;    
+    string      VerifyCode                      = 7;    
+}
+
+message NpcDead
+{
+    PKGTypeID   PkgID                           = 1;    
+    uint64      UserID                          = 2;  
+    uint64      RoleID                          = 3;    
+    int32       MapID                           = 4; 
+    uint64      NpcID                           = 5;   
+    int32       TypeID                          = 6;   
+    string      VerifyCode                      = 7;   
+}
+
+message PickUpItem
+{
+    PKGTypeID   PkgID                           = 1;   
+    uint64      UserID                          = 2;    
+    uint64      RoleID                          = 3;  
+    int32       MapID                           = 4;   
+    uint64      ItemID                          = 5;    
+    int32       TypeID                          = 6;    
+    string      VerifyCode                      = 7;   
+}
+
+message AttackInfo
+{
+    PKGTypeID   PkgID                           = 1;    //
+    uint64      UserID                          = 2;    //
+    uint64      RoleID                          = 3;    //
+    uint64      AttackerID                      = 4;    //
+    int32       AttackerType                    = 5;    //
+    uint64      BeHiterID                       = 6;    //
+    int32       BeHiterType                     = 7;    //
+    int32       AttackTypeID                    = 8;    //
+    string      VerifyCode                      = 9;    //
+    float       AttackPosX                      = 10;
+    float       AttackPosY                      = 11;
+    float       AttackPosZ                      = 12;
+    float       BHiterPosX                      = 13;
+    float       BHiterPosY                      = 14;
+    float       BHiterPosZ                      = 15;
+}
+
+message AttackResult
+{
+    PKGTypeID   PkgID                           = 1;    //
+    uint64      UserID                          = 2;    //
+    uint64      AttackerID                      = 3;    //
+    int32       AttackerType                    = 4;    //
+    uint64      BeHiterID                       = 5;    //
+    int32       BeHiterType                     = 6;    //
+    int32       AttackTypeID                    = 7;    //
+    int32       ResultType                      = 8;    //
+    int32       AttackValue                     = 9;    //
+    int32       AttackReturn                    = 10;   //
+    float       AttackPosX                      = 11;
+    float       AttackPosY                      = 12;
+    float       AttackPosZ                      = 13;
+    float       BHiterPosX                      = 14;
+    float       BHiterPosY                      = 15;
+    float       BHiterPosZ                      = 16;
+}
+
+message DebugNpcTarget
+{
+    PKGTypeID   PkgID                           = 1;    //
+    uint64      UserID                          = 2;    //
+    uint64      NpcID                           = 3;    //
+    float       PosX                            = 7;    
+    float       PosY                            = 8;
+    float       PosZ                            = 9;
+}

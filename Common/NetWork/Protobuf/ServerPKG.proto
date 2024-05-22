@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+import "MessageID.proto";
+
+package ServerPKG;
+
+//
+message ServerHeart
+{
+    PKGTypeID   PkgID                           = 1;    //
+    string      SenderID                        = 2;    //
+    int64       SendTime                        = 3;    //
+    int32       DelayTime                       = 4;    //
+}
+
+//
+message RegServerType
+{
+    PKGTypeID   PkgID                           = 1;    //
+    string      SenderID                        = 2;    //
+    string      IP                              = 3;
+    int32       Port                            = 4;
+    int32       ServerType                      = 5;    //
+    int32       CurUser                         = 6;
+    int32       MaxUser                         = 7;
+    repeated    int32   ModuleList              = 8;    //
+}
+
+message RegServerResult
+{
+    PKGTypeID   PkgID                           = 1;    //
+    string      SenderID                        = 2;    //
+    repeated    RegServerType   ServerList      = 3;    //
+}
+
+message PlayerDisconnection
+{
+    PKGTypeID   PkgID                           = 1;    //
+    int64       UserID                          = 2;    //
+}
+
+message ServerRoleAttrChange
+{
+    PKGTypeID   PkgID                           = 1;    //
+    uint64      UserID                          = 2;    //
+    uint64      RoleID                          = 3;    //
+    string      ServerID                        = 4;    //
+}

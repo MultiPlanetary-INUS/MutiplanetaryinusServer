@@ -1,0 +1,90 @@
+syntax = "proto3";
+
+import "MessageID.proto";
+
+package GamePKG;
+
+message QueryRoleList
+{
+    PKGTypeID   PkgID                           = 1;    //
+    uint64      UserID                          = 2;    //
+    string      VerifyCode                      = 3;    //
+}
+
+message RoleInfo
+{
+    PKGTypeID   PkgID                           = 1;    //
+    uint64      UserID                          = 2;    //
+    uint64      RoleID                          = 3;    //
+    string      RoleName                        = 4;    //
+    int32       Vocation                        = 5;    //
+    int32       Gender                          = 6;    //
+    int32       Hair                            = 7;    //
+    int32       HairColor                       = 8;    //
+    int32       Face                            = 9;    //
+    int32       State                           = 10;   //
+    string      VerifyCode                      = 11;   //
+}
+
+message RoleAttr
+{
+    PKGTypeID   PkgID                           = 1;    //
+    uint64      UserID                          = 2;    //
+    uint64      RoleID                          = 3;    //
+    int32       RoleLevel                       = 4;    //
+    int64       CurHP                           = 5;    //
+    int64       CurMP                           = 6;    //
+    int64       CurExp                          = 7;    //
+    uint64      Money                           = 8;    //
+    uint64      GuidID                          = 9;    //
+    int32       GuidLevel                       = 10;   //
+    int32       MapID                           = 11;   //
+    float       PosX                            = 12;   //
+    float       PosY                            = 13;   //
+    float       PosZ                            = 14;   //
+    float       Direction                       = 15;   //
+    int32       Power                           = 16;   //
+    int32       Accurate                        = 17;   //
+    int32       Resistibility                   = 18;   //
+    int32       Vitality                        = 19;   //
+    int32       Lucky                           = 20;   //
+    int32       Cooling                         = 21;   //
+    int32       FreePoint                       = 22;   //
+}
+
+message RoleList
+{
+    PKGTypeID   PkgID                           = 1;    //
+    uint64      UserID                          = 2;    //
+    uint64      SelRoleID                       = 3;    //
+    repeated RoleInfo RoleList                  = 4;    //
+}
+
+message DeleteRole
+{
+    PKGTypeID   PkgID                           = 1;    //
+    uint64      UserID                          = 2;    //
+    uint64      RoleID                          = 3;    //
+    string      DeleteWord                      = 4;    //
+    string      VerifyCode                      = 5;    //
+}
+
+message RoleAttrValue
+{
+    PKGTypeID   PkgID                           = 1;    //
+    uint64      UserID                          = 2;    //
+    uint64      RoleID                          = 3;    //
+    int32       HP                              = 4;    //
+    int32       MP                              = 5;    //
+    int32       AttackMin                       = 6;    //
+    int32       AttackMax                       = 7;    //
+    int32       DefenseMin                      = 8;    //
+    int32       DefenseMax                      = 9;    //
+    int32       Power                           = 10;   //
+    int32       Accurate                        = 11;   //
+    int32       Resistibility                   = 12;   //
+    int32       Vitality                        = 13;   //
+    int32       Lucky                           = 14;   //
+    int32       Cooling                         = 15;   //
+    string      VerifyCode                      = 16;   //
+}

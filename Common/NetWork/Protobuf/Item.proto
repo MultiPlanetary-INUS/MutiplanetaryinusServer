@@ -1,0 +1,99 @@
+syntax = "proto3";
+
+import "MessageID.proto";
+package GamePKG;
+
+message ItemCF
+{
+    PKGTypeID   PkgID                           = 1;    //
+    uint64      UserID                          = 2;    //
+    uint64      RoleID                          = 4;    //
+    uint64      ItemID                          = 5;    //
+    uint64      TypeID                          = 6;    //
+    int32       Count                           = 7;    //
+    ItemContainerType Container                 = 8;    //
+    int32       Index                           = 9;    //
+    bool        Binded                          = 10;   //
+    bool        Locked                          = 11;   //
+    int32       Durability                      = 12;   //
+    int32       DurabilityMax                   = 13;   //
+    int64       Duration                        = 14;   //
+    uint64      GetTime                         = 15;   //
+    uint64      LockTime                        = 16;   //
+    int32       TimesRemain                     = 17;   //
+}
+
+message ItemList
+{
+    PKGTypeID   PkgID                           = 1;    //
+    uint64      UserID                          = 2;    //
+    uint64      RoleID                          = 4;    //
+    repeated ItemCF List                        = 5;    //
+}
+
+message RemoveItem
+{
+    PKGTypeID   PkgID                           = 1;    //
+    uint64      UserID                          = 2;    //
+    uint64      RoleID                          = 4;    //
+    uint64      ItemID                          = 5;    //
+    string      VerifyCode                      = 6;    //
+}
+
+message ItemPos
+{
+    int32       Container                       = 1;    //
+    int32       Index                           = 2;    //
+    // float       X                               = 3;    //
+    // float       Y                               = 4;    //
+    // float       Z                               = 5;    //
+}
+
+message ChangeItemPos
+{
+    PKGTypeID   PkgID                           = 1;    //
+    uint64      UserID                          = 2;    //
+    uint64      RoleID                          = 4;    //
+    uint64      ItemID                          = 5;    //
+    ItemPos     OldPos                          = 6;
+    ItemPos     NewPos                          = 7;
+    string      VerifyCode                      = 8;    //
+}
+
+message UseItem
+{
+    PKGTypeID   PkgID                           = 1;    //
+    uint64      UserID                          = 2;    //
+    uint64      RoleID                          = 4;    //
+    uint64      TargetRole                      = 5;    //
+    uint64      ItemID                          = 6;    //
+    string      VerifyCode                      = 7;    //
+}
+
+message AddSkill
+{
+    PKGTypeID   PkgID                           = 1;    //
+    uint64      UserID                          = 2;    //
+    uint64      RoleID                          = 4;    //
+    int32       SkillID                         = 5;    //
+    int32       SkillLevel                      = 6;    //
+    string      VerifyCode                      = 7;    //
+}
+
+message UseSkill
+{
+    PKGTypeID   PkgID                           = 1;    //
+    uint64      UserID                          = 2;    //
+    uint64      RoleID                          = 4;    //
+    int32       SkillID                         = 5;    //
+    string      VerifyCode                      = 6;    //
+}
+
+message DelSkill
+{
+    PKGTypeID   PkgID                           = 1;    //
+    uint64      UserID                          = 2;    //
+    uint64      RoleID                          = 4;    //
+    int32       SkillID                         = 5;    //
+    string      VerifyCode                      = 6;    //
+}

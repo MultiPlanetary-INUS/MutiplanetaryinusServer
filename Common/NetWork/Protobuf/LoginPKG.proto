@@ -1,0 +1,87 @@
+syntax = "proto3";
+
+import "MessageID.proto";
+
+package GamePKG;
+
+message CompGameInfo
+{
+    PKGTypeID   PkgID                           = 1;    //
+    int32       GameVersion                     = 2;    //
+    uint64      VerifyCode                      = 3;    //
+}
+
+message ClientHeart
+{
+    PKGTypeID   PkgID                           = 1;    //
+    int64       SendTime                        = 2;    //
+    int32       DelayTime                       = 3;    //
+}
+
+message AskIdentifyCode
+{
+    PKGTypeID   PkgID                           = 1;    //
+    uint64      IdentifyID                      = 2;    //
+    string      Email                           = 3;    //
+}
+
+message AskIdentifyResult
+{
+    PKGTypeID   PkgID                           = 1;    //
+    int32       Code                            = 2;    //
+    uint64      IdentifyID                      = 3;    //
+    string      Info                            = 4;    //
+}
+
+message NotifyClient
+{
+    PKGTypeID   PkgID                           = 1;    //
+    int32       Code                            = 2;    //
+    string      Info                            = 3;    //
+    string      UserName                        = 4;
+    uint64      UserID                          = 5;
+}
+
+message GameLogin
+{
+    PKGTypeID   PkgID                           = 1;    //
+    string      UserName                        = 2;    //
+    string      PassWord                        = 3;    //
+    string      IP                              = 4;    //
+}
+
+message LoginResult
+{
+    PKGTypeID   PkgID                           = 1;    //
+    string      UserName                        = 2;    //
+    uint64      UserID                          = 3;    //
+    int32       State                           = 4;    //
+    int32       BlockType                       = 5;    //
+    uint64      BlockTime                       = 6;    //
+    int32       Authority                       = 7;    //
+    string      LastIP                          = 8;    //
+    string      VerifyCode                      = 9;    //
+    uint64      Gold                            = 10;   //
+}
+
+message RegistAccount
+{
+    PKGTypeID   PkgID                           = 1;    //
+    string      UserName                        = 2;    //
+    string      PassWord                        = 3;    //
+    string      Birthday                        = 4;    //
+    int32       Gender                          = 5;    //
+    string      VerifyCode                      = 6;    //
+    uint64      VerifyID                        = 7;    //
+    string      IP                              = 8;    //
+}
+
+message SetASafeQuestion
+{
+    PKGTypeID   PkgID                           = 1;    //
+    uint64      UserID                          = 2;    //
+    string      Question                        = 3;    // 
+    string      Answer                          = 4;    //
+    string      VerifyCode                      = 5;    //
+}
+
