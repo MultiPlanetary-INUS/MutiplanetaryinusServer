@@ -1,0 +1,13 @@
+{
+    "dependencies": {
+        "google-protobuf": "^3.20.1",
+        "ini": "^3.0.0",
+        "math3d": "^0.2.2",
+        "mysql": "^2.18.1",
+        "nodemailer": "^6.7.8",
+        "pkg": "^5.8.0",
+        "redis": "^4.3.0",
+        "silly-datetime": "^0.1.2",
+        "timer.js": "^1.0.4"
+    }
+}
